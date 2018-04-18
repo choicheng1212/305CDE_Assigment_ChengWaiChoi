@@ -1,9 +1,9 @@
 							
 
-$(function() {
+function init(){ 
   weather();
-});
-
+}
+window.onload = init;
 function weather(){
 								var city = "Hong Kong";
 								var key = '1d2107ba017fda2c17eecc4810e23f1d';

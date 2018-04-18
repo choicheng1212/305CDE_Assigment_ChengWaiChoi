@@ -193,6 +193,7 @@ var dbUrl = "mongodb://localhost:27017/";
                dbo.collection("customers").find({"UserName": myobj.UserName, "Password":myobj.Password}).toArray(function(err, result) {
     						if (err) throw err;
 								   if(result[0].UserName == myobj.UserName){
+										 			console.log("Post: " +result[0].Post);
 										 			console.log("OK");
 									 				return res.end(result[0].Post);
 									 }
