@@ -232,56 +232,6 @@ var dbUrl = "mongodb://localhost:27017/";
 							return res.end("NO");
  						 });
 								
-
-							
-							
-							
-							
-							
-							
-							/*
-							dbo.collection("customers").find({"UserName" : myobj.UserName}).toArray(function(err, result) {
-    						if (err) throw err;
-								
-    						console.log("OK   "+result);
-    					db.close();
-  });*/
-							
-							
-			//				var myquery = { Name: 'apple' };
-		//					dbo.collection("customers").deleteOne(myquery, function(err, obj) {
-    //if (err) throw err;
-    //console.log("1 document deleted");
-    //db.close();
-  //});
-							
-							
-							// count=dbo.collection("customers").find({"Name" : "ALEX"}).count();
-							//console.log("total count="+dbo.collection("customers").find({"Name" : "ALEX"}).count());
-							/*
-							dbo.collection("customers").count({"UserName" : "Hello123"}, function (error, count) {
-  						console.log(error, count);
-							
-								 finalcount=count;
-								
-								
-							});
-							
-							*/
-		
-							//o.collection("customers").find({}).toArray(function(err, result) {
-    // (err) throw err;
-   //console.log(result);
-  //db.close();
-//);
-							
-			//				dbo.collection("customers").find({"Name": "ALEX"}).toArray(function(err, result) {
-    //if (err) throw err;
-    //console.log(result);
-    //db.close();
-	//}); 
-							
-								//console.log("final count="+finalcount);
 						
 					});
 						
@@ -327,7 +277,6 @@ var dbUrl = "mongodb://localhost:27017/";
             //  "Content-Type": "application/json",
              // "Content-Length": msg.length
             //});
-
 						
 						MongoClient.connect(dbUrl, function(err, db) {
   					if (err) throw err;
@@ -340,20 +289,14 @@ var dbUrl = "mongodb://localhost:27017/";
     				//console.log("1 document inserted");
     				//db.close();
   					//});
-							dbo.collection("customers").find({}).toArray(function(err, result) {
+							dbo.collection("customers").find({"UserName": myobj.UserName, "Password":myobj.Password}).toArray(function(err, result) {
     						if (err) throw err;
 							console.log(result);
-								
-								
+							
 							console.log("bookmark="+bookmark);
-							
-							
-							
-
 									var newvalues,postvar;
-									for(var i =0;i< result.length;i++)
-								   if(result[i].UserName == myobj.UserName&&result[i].Password == myobj.Password){
-										 postvar = parseInt(result[i].Post)- parseInt(myobj.Post);
+								   if(result[0].UserName == myobj.UserName&&result[0].Password == myobj.Password){
+										 postvar = parseInt(result[0].Post)- parseInt(myobj.Post);
 										 newvalues = {$set: {Post:  postvar.toString()} };
 									 }
 								var myquery = {UserName: myobj.UserName, Password: myobj.Password};
@@ -365,10 +308,8 @@ var dbUrl = "mongodb://localhost:27017/";
 							
 									
 								
-							db.close();});
-							
-								console.log("final count="+finalcount);
-						
+							db.close();
+							});
 					});
 						
             
